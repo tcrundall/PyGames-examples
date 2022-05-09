@@ -42,11 +42,8 @@ class Spaceship:
         self.health = self.init_health
         self.keys = KEYS[player]
 
-
-    def reset_vel(self):
-        self.vx = 0
-        self.vy = 0
-
+    def __repr__(self):
+        return "Spaceship %s %s"%(str(self.color), str(self.rect.center))
 
     def handle_control(self, keys_pressed):
         self.vx = 0
@@ -67,8 +64,8 @@ class Spaceship:
         if self.vx or self.vy:
             vel_vec = np.array([self.vx, self.vy])
             vel_vec = self.speed * vel_vec / np.linalg.norm(vel_vec)
-            self.rect.x += vel_vec[0]
-            self.rect.y += vel_vec[1]
-    
+            self.rect.move_ip(*vel_vec)
+
+
     def draw(self, screen):
         screen.blit(self.image, self.rect.topleft)
