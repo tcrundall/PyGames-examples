@@ -2,7 +2,7 @@ import pygame
 
 class Bullet():
     width = 15
-    height = 5
+    height = 3
     velx = 10
 
     def __init__(self, color, x, y, direc, screen):
